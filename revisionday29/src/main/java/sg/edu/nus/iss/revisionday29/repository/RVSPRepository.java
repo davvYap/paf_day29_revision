@@ -75,12 +75,18 @@ public class RVSPRepository {
 
         List<AggregationRSVP> aggregationList = new ArrayList<>();
 
-        Iterator<Document> docIt = results.iterator();
+        List<Document> documents = results.getMappedResults();
 
-        while (docIt.hasNext()) {
-            Document doc = docIt.next();
-            aggregationList.add(AggregationRSVP.createFromDocument(doc));
+        for (Document document : documents) {
+            aggregationList.add(AggregationRSVP.createFromDocument(document));
         }
+
+        // Iterator<Document> docIt = results.iterator();
+
+        // while (docIt.hasNext()) {
+        // Document doc = docIt.next();
+        // aggregationList.add(AggregationRSVP.createFromDocument(doc));
+        // }
 
         return aggregationList;
     }
